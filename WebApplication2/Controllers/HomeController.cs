@@ -20,6 +20,8 @@ namespace WebApplication2.Controllers {
         }
 
         public IActionResult Privacy() {
+            ViewData["Menssage"] = "Salles Web MVC App from C# Course";
+            ViewData["Professor"] = "Jonas Araujo";
             return View();
         }
 
