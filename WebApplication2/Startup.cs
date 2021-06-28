@@ -24,7 +24,8 @@ namespace WebApplication2 {
             services.AddControllersWithViews();
 
     services.AddDbContext<WebApplication2Context>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("WebApplication2Context")));
+            options.UseMySql(Configuration.GetConnectionString("WebApplication2Context"), builder =>
+                builder.MigrationsAssembly("WebApplication2")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
