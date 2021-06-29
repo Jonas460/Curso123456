@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebApplication2.Data;
 using WebApplication2.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebApplication2.Services {
     public class SellerService {
@@ -20,7 +21,7 @@ namespace WebApplication2.Services {
             _context.SaveChanges();
         }
         public Saller FindById(int id) {
-            return _context.Saller.FirstOrDefault(obj => obj.Id == id);
+            return _context.Saller.Include(obj => obj.Department).FirstOrDefault(obj => obj.Id == id);
         }
         public void Remove(int id) {
             var obj = _context.Saller.Find(id);
