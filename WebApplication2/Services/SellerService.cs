@@ -16,7 +16,6 @@ namespace WebApplication2.Services {
             return _context.Saller.ToList();
         }
         public void Insert(Saller obj) {
-            obj.Department = _context.Department.First();
             _context.Add(obj);
             _context.SaveChanges();
         }
