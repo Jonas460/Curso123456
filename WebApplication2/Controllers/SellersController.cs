@@ -29,6 +29,11 @@ namespace WebApplication2.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Saller saller) {
+            if (!ModelState.IsValid) {
+                var departments = _departmentService.FindAll();
+                var viewModel = new SellerFormViewModel { Saller = saller, Departments = departments };
+                return View(viewModel);
+            }
             _sellerService.Insert(saller);
             return RedirectToAction(nameof(Index));
         }
@@ -59,6 +64,7 @@ namespace WebApplication2.Controllers {
             return View(obj);
         }
         public IActionResult Edit(int? id) {
+
             if (id == null) {
                 return RedirectToAction(nameof(Error), new { message = "Id not provided" });
             }
@@ -73,6 +79,11 @@ namespace WebApplication2.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, Saller saller) {
+            if (!ModelState.IsValid) {
+                var departments = _departmentService.FindAll();
+                var viewModel = new SellerFormViewModel { Saller = saller, Departments = departments };
+                return View(viewModel);
+            }
             if (id != saller.Id) {
                 return RedirectToAction(nameof(Error), new { message = "Id mismatch" });
             }
