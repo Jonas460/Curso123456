@@ -19,7 +19,7 @@ namespace WebApplication2.Data {
                _context.SalesRecord.Any()) {
                 return;
             }
-            Department d1 = new Department(1, "Computers");
+            /*Department d1 = new Department(1, "Computers");
             Department d2 = new Department(2, "Eletronics");
             Department d3 = new Department(3, "Fashion");
             Department d4 = new Department(4, "Books");
@@ -71,7 +71,7 @@ namespace WebApplication2.Data {
                 r11, r12, r13, r14, r15, r16, r17, r18, r19, r20,
                 r21, r22, r23, r24, r25, r26, r27, r28, r29, r30
             );
-
+            */
             _context.SaveChanges();
         }
     }
