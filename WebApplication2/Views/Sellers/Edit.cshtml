@@ -1,0 +1,46 @@
+﻿@model WebApplication2.Models.ViewModels.SellerFormViewModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>@ViewData["Title"]</h2>
+<h4>Seller</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="Saller.Id" />
+            <div class="form-group">
+                <label asp-for="Saller.Name"></label>
+                <input asp-for="Saller.Name" class="form-control">
+                <span asp-validation-for="Saller.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Saller.Email"></label>
+                <input asp-for="Saller.Email" class="form-control">
+                <span asp-validation-for="Saller.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Saller.BirthDate"></label>
+                <input asp-for="Saller.BirthDate" class="form-control">
+                <span asp-validation-for="Saller.BirthDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Saller.BaseSalary"></label>
+                <input asp-for="Saller.BaseSalary" class="form-control">
+                <span asp-validation-for="Saller.BaseSalary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Saller.DepartmentId"></label>
+                <select asp-for="Saller.DepartmentId" asp-items="@(new SelectList(Model.Departments,"id", "Name"))" class="form-control"></select>
+                <span asp-validation-for="Saller.DepartmentId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-outline-success" />
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
